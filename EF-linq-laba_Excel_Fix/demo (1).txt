@@ -1,0 +1,94 @@
+
+CREATE DATABASE demo1;
+
+CREATE TABLE Groups(
+	Code_group int NOT NULL primary key,
+	Name_group varchar(50) NOT NULL,
+	Num_course int NULL);
+    
+    CREATE TABLE Subjects(
+	Code_subject int NOT NULL primary key,
+	Name_subject varchar(50) NOT NULL,
+	Count_hours int NULL);
+    
+    
+    CREATE TABLE Students(
+	Code_stud int NOT NULL primary key,
+	Surname varchar(50) NOT NULL,
+	Name varchar(50) NOT NULL,
+	Code_group int NULL);
+    
+    CREATE TABLE Progress(
+        idpr int NOT NULL primary key, 
+	Code_stud int NOT NULL,
+	Code_subject int NOT NULL,
+	Code_lector int NOT NULL,
+	Date_exam date NOT NULL,
+	Estimate int NULL);
+    
+    CREATE TABLE Lectors(
+	Code_lector int NOT NULL primary key,
+	Name_lector varchar(50) NOT NULL,
+	Post varchar(50) NULL);
+
+    
+    Alter Table students add Foreign Key(Code_group)
+References groups(Code_group);
+
+  Alter Table progress add Foreign Key (Code_stud)
+References Students(Code_stud);
+
+  Alter Table progress add Foreign Key (Code_subject)
+References Subjects(Code_subject);
+
+  Alter Table progress add Foreign Key (Code_lector)
+References Lectors(Code_lector);
+
+
+
+insert into Groups values(1, '432121', 3);
+insert into Groups values(2, '433121', 2);
+insert into Groups values(3, '433121', 2);
+insert into Groups values(4, '431121', 4);
+
+
+insert into Students values(1, 'Сидорова','Анастасия',2);
+insert into Students values(2, 'Мазанова','Наталья',2);
+insert into Students values(3, 'Хабибуллина','Карина',1);
+insert into Students values(4, 'Бакиров','Муслим',1);
+insert into Students values(5, 'Байрамов','Наиль',2);
+insert into Students values(6, 'Совкова','Дарья',3);
+insert into Students values(7, 'Сущевский','Дмитрий',4);
+
+
+insert into Subjects values(1, 'Базы данных',100);
+insert into Subjects values(2, 'Программирование',NULL);
+insert into Subjects values(3, 'Структуры и алгоритмы обработки информации',100);
+insert into Subjects values(4, 'История',50);
+insert into Subjects values(5, 'Иностранный язык',55);
+insert into Subjects values(6, 'Физика',30);
+
+
+insert into Lectors values(1, 'Иванов Иван Петрович','доцент');
+insert into Lectors values(2, 'Сидоров Евгений Павлович','ассистент');
+insert into Lectors values(3, 'Петров Игорь Иванович','доцент');
+insert into Lectors values(4, 'Климина Евгения Андреевна','старший преподаватель');
+
+
+
+insert into progress values( 1,	2,	1,	'2013-12-29',	3);
+insert into progress values(2,	2,	1,	'2013-12-29 ',4);
+insert into progress values(3,	1,	2,	'2014-01-15' ,5);
+insert into progress values(3,	2,	1,	'2013-06-13',5);
+insert into progress values(3,	3,	4,	'2013-06-18',4);
+insert into progress values(4,	1,	2,	'2013-06-13',4);
+insert into progress values(4,	2,	1,	'2014-01-15',4);
+insert into progress values(4,	5,	3,	'2014-02-13',3);
+insert into progress values(5,	4,	3,	'2012-12-12',4);
+insert into progress values(5,	2,	1,	'2014-01-15' ,4);
+insert into progress values(5,	3,	4,	'2013-06-18',5);
+insert into progress values(7,	1,	2,	'2013-01-15',2);
+insert into progress values(7,	2,	1,	'2014-06-18',2);
+insert into progress values(7,	3,	4,	'2014-01-15',	3);
+    
+    
