@@ -20,7 +20,11 @@ namespace EF_linq_laba
         public int codePro;
         private void Form2_Load(object sender, EventArgs e)
         {
+            // no smaller than design time size
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
 
+            // no larger than screen size
+            this.MaximumSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -27,8 +27,17 @@ namespace Laba9
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "booksDataSet.authors". При необходимости она может быть перемещена или удалена.
-            this.authorsTableAdapter.Fill(this.booksDataSet.authors);
+            
+            try
+            {
+                this.authorsTableAdapter.Fill(this.booksDataSet.authors);
+            }
+
+            catch
+            {
+                MessageBox.Show("Ошибка подключения к базе данных!");
+                this.Close();
+            }
 
         }
 

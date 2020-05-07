@@ -30,35 +30,37 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.BooksDataSet1 = new Laba9.BooksDataSet1();
             this.authorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.BooksDataSet1 = new Laba9.BooksDataSet1();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.authorsTableAdapter = new Laba9.BooksDataSet1TableAdapters.authorsTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.BooksDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BooksDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
-            // reportViewer1
+            // authorsBindingSource
             // 
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.authorsBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Laba9.Report1.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            //this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(774, 449);
-            this.reportViewer1.TabIndex = 0;
+            this.authorsBindingSource.DataMember = "authors";
+            this.authorsBindingSource.DataSource = this.BooksDataSet1;
             // 
             // BooksDataSet1
             // 
             this.BooksDataSet1.DataSetName = "BooksDataSet1";
             this.BooksDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // authorsBindingSource
+            // reportViewer1
             // 
-            this.authorsBindingSource.DataMember = "authors";
-            this.authorsBindingSource.DataSource = this.BooksDataSet1;
+            this.reportViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.authorsBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Laba9.Report1.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(774, 449);
+            this.reportViewer1.TabIndex = 0;
             // 
             // authorsTableAdapter
             // 
@@ -68,13 +70,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(773, 450);
+            this.ClientSize = new System.Drawing.Size(779, 451);
             this.Controls.Add(this.reportViewer1);
             this.Name = "Form7";
             this.Text = "Отчёт таблицы \"Авторы\"";
             this.Load += new System.EventHandler(this.Form7_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.BooksDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BooksDataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }

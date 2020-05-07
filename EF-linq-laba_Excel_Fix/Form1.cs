@@ -21,23 +21,49 @@ namespace EF_linq_laba
         public Form1()
         {
             InitializeComponent();
-            studentsheet = (from stud in db.students
-                            select stud).ToList();
+            
+            try
+            {
+                studentsheet = (from stud in db.students
+                                select stud).ToList();
 
-            var query = (from stud in studentsheet
-                         join g in db.groups on stud.code_group equals g.code_group
-                         orderby stud.code_stud
-                         select new { stud.code_stud, stud.surname, stud.name, g.name_group, stud.code_group }).ToList();
-            dataGridView1.DataSource = query;
-            dataGridView1.Columns[0].HeaderText = "Номер студента";
-            dataGridView1.Columns[1].HeaderText = "Фамилия";
-            dataGridView1.Columns[2].HeaderText = "Имя";
-            dataGridView1.Columns[3].HeaderText = "Номер группы";
-            dataGridView1.Columns[4].Visible = false;
-            dataGridView1.ReadOnly = true;
+                var query = (from stud in studentsheet
+                             join g in db.groups on stud.code_group equals g.code_group
+                             orderby stud.code_stud
+                             select new { stud.code_stud, stud.surname, stud.name, g.name_group, stud.code_group }).ToList();
 
-            if (dataGridView1.RowCount == 0) label1.Visible = true;
-            else label1.Visible = false;
+                dataGridView1.DataSource = query;
+                dataGridView1.Columns[0].HeaderText = "Номер студента";
+                dataGridView1.Columns[1].HeaderText = "Фамилия";
+                dataGridView1.Columns[2].HeaderText = "Имя";
+                dataGridView1.Columns[3].HeaderText = "Номер группы";
+                dataGridView1.Columns[4].Visible = false;
+                dataGridView1.ReadOnly = true;
+
+                if (dataGridView1.RowCount == 0)
+                {
+                    label1.Visible = true;
+                }
+
+                else
+                {
+                    label1.Visible = false;
+                }
+
+            }
+            
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных! Подключитесь к своей базе данных!");
+                
+                label1.Visible = true;
+                label1.Text = "Нет связи с базой данных";
+                this.Enabled = false;
+
+                //this.Dispose();
+                //this.Close();
+            }
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -47,7 +73,14 @@ namespace EF_linq_laba
 
         private void Form1_Load(object sender, EventArgs e)
         {
+             // no smaller than design time size
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
 
+            // no larger than screen size
+            this.MaximumSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+
+            //this.AutoSize = true;
+            //this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -91,7 +124,7 @@ namespace EF_linq_laba
 
             if (dataGridView1.SelectedCells.Count == 1)
             {
-                if (Application.OpenForms.Count == 2)
+                if (Application.OpenForms.Count == 1)
                 {
                     student item = query.First(w => w.code_stud.ToString() == dataGridView1.SelectedCells[0]
                       .OwningRow.Cells[0].Value.ToString());
@@ -108,7 +141,7 @@ namespace EF_linq_laba
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms.Count == 2)
+            if (Application.OpenForms.Count == 1)
             {
                 FormAddStudent addSt = new FormAddStudent();
                 addSt.Owner = this;
@@ -125,6 +158,8 @@ namespace EF_linq_laba
                          orderby stud.code_stud
                          select new { stud.code_stud, stud.surname, stud.name, g.name_group, stud.code_group }).ToList();
             dataGridView1.DataSource = query;
+
+            label1.Visible = false;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -133,7 +168,7 @@ namespace EF_linq_laba
                                    select stud).ToList();
             if (dataGridView1.SelectedCells.Count == 1)
             {
-                if (Application.OpenForms.Count == 2)
+                if (Application.OpenForms.Count == 1)
                 {
                     student item = query.First(w => w.code_stud.ToString() == dataGridView1.SelectedCells[0]
                       .OwningRow.Cells[0].Value.ToString());
@@ -141,8 +176,9 @@ namespace EF_linq_laba
                     FormAcademicPerformance abc = new FormAcademicPerformance();
                     abc.Owner = this;
                     abc.Show();
-
+                    
                 }
+
                 else Application.OpenForms[0].Focus();
             }
         }

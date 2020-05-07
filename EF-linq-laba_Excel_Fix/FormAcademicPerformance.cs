@@ -23,34 +23,46 @@ namespace EF_linq_laba
         {
             InitializeComponent();
 
-            var students_for_list = (from g in db.students
-                                     select g.surname).Distinct();
-            //var students_for_list = (from stud in progressSheet
-            //             join g in db.students on stud.code_stud equals g.code_stud
-            //             join e in db.subjects on stud.code_subject equals e.code_subject
-            //             orderby g.surname
-            //             select new {g.surname}).Distinct();
-
-            foreach (string it in students_for_list)
+            try
             {
-                comboBox1.Items.Add(it);
+                var students_for_list = (from g in db.students
+                                         select g.surname).Distinct();
+                //var students_for_list = (from stud in progressSheet
+                //             join g in db.students on stud.code_stud equals g.code_stud
+                //             join e in db.subjects on stud.code_subject equals e.code_subject
+                //             orderby g.surname
+                //             select new {g.surname}).Distinct();
+
+                foreach (string it in students_for_list)
+                {
+                    comboBox1.Items.Add(it);
+                }
+                var subject_for_list = (from s in db.subjects
+                                        select s.name_subject).Distinct();
+                foreach (string it in subject_for_list)
+                {
+                    comboBox3.Items.Add(it);
+                }
+                var lectors_for_list = (from h in db.lectors
+                                        select h.name_lector).Distinct();
+                foreach (string it in lectors_for_list)
+                {
+                    comboBox2.Items.Add(it);
+                }
+
+
+                loadData();
             }
-            var subject_for_list = (from s in db.subjects
-                                    select s.name_subject).Distinct();
-            foreach (string it in subject_for_list)
+
+            catch
             {
-                comboBox3.Items.Add(it);
+
+                MessageBox.Show("Ошибка подключения к базе данных! Подключитесь к своей базе данных!");
+
+                label1.Visible = true;
+                label1.Text = "Нет связи с базой данных";
+                this.Enabled = false;
             }
-            var lectors_for_list = (from h in db.lectors
-                                    select h.name_lector).Distinct();
-            foreach (string it in lectors_for_list)
-            {
-                comboBox2.Items.Add(it);
-            }
-
-
-            loadData();
-
 
 
         }
@@ -79,7 +91,11 @@ namespace EF_linq_laba
         }
         private void FormAcademicPerformance_Load(object sender, EventArgs e)
         {
+            // no smaller than design time size
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
 
+            // no larger than screen size
+            this.MaximumSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -190,28 +206,42 @@ namespace EF_linq_laba
 
         private void button4_Click(object sender, EventArgs e)
         {
-            DataGridViewRow row = this.dataGridView1.Rows[selectedrow];
-            var idpr = Convert.ToInt32(row.Cells[0].Value.ToString());
-            var verifcation = db.progresses.Where(x => x.idpro == idpr).FirstOrDefault();
-            Form2 nb = new Form2();
-            nb.txtName.Text = verifcation.student.name.ToString() +" " + verifcation.student.surname.ToString();
-            nb.CbEstimate.Text = verifcation.estimate.ToString();
-            nb.cbDisp.Text = verifcation.subject.name_subject.ToString();
-            nb.codePro = verifcation.idpro;
-            nb.Show();
-            this.Close();
+            try
+            {
+                DataGridViewRow row = this.dataGridView1.Rows[selectedrow];
+                var idpr = Convert.ToInt32(row.Cells[0].Value.ToString());
+                var verifcation = db.progresses.Where(x => x.idpro == idpr).FirstOrDefault();
+                Form2 nb = new Form2();
+                nb.txtName.Text = verifcation.student.name.ToString() + " " + verifcation.student.surname.ToString();
+                nb.CbEstimate.Text = verifcation.estimate.ToString();
+                nb.cbDisp.Text = verifcation.subject.name_subject.ToString();
+                nb.codePro = verifcation.idpro;
+                nb.Show();
+                this.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Вы не выбрали запись для изменения оценки");
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            try 
+            {
+                var verification = selectedrow;
+                DataGridViewRow row = this.dataGridView1.Rows[selectedrow];
+                var idpr = Convert.ToInt32(row.Cells[0].Value.ToString());
+                var de = db.progresses.Where(x => x.idpro == idpr).FirstOrDefault();
+                db.Entry(de).State = System.Data.Entity.EntityState.Deleted;
+                db.SaveChanges();
+                MessageBox.Show("Удалено");
+            }
+            catch 
+            {
+                MessageBox.Show("Вы не выбрали запись для удаления");
+            }
 
-            var verification = selectedrow;
-            DataGridViewRow row = this.dataGridView1.Rows[selectedrow];
-            var idpr = Convert.ToInt32(row.Cells[0].Value.ToString());
-            var de = db.progresses.Where(x => x.idpro == idpr).FirstOrDefault();
-            db.Entry(de).State = System.Data.Entity.EntityState.Deleted;
-            db.SaveChanges();
-            MessageBox.Show("Удалено");
         }
         int selectedrow;
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

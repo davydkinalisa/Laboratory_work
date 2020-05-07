@@ -91,5 +91,14 @@ namespace EF_linq_laba
         {
             this.Close();
         }
+
+        private void FormAddEstimate_Load(object sender, EventArgs e)
+        {
+            // no smaller than design time size
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+
+            // no larger than screen size
+            this.MaximumSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+        }
     }
 }

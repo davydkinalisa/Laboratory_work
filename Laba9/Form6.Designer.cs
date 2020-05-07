@@ -39,21 +39,21 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.booksDataSet = new Laba9.BooksDataSet();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.booksDataSet = new Laba9.BooksDataSet();
-            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.booksTableAdapter = new Laba9.BooksDataSetTableAdapters.booksTableAdapter();
             this.namebookDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.yearbookDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.booksTableAdapter = new Laba9.BooksDataSetTableAdapters.booksTableAdapter();
             this.booksDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.booksDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.booksDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -105,7 +105,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(408, 336);
+            this.button2.Location = new System.Drawing.Point(423, 336);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 23);
             this.button2.TabIndex = 5;
@@ -115,7 +115,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(408, 380);
+            this.button3.Location = new System.Drawing.Point(423, 380);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 23);
             this.button3.TabIndex = 6;
@@ -125,7 +125,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(543, 339);
+            this.button4.Location = new System.Drawing.Point(560, 339);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 7;
@@ -135,7 +135,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(543, 378);
+            this.button5.Location = new System.Drawing.Point(560, 378);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 8;
@@ -152,6 +152,11 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(293, 21);
             this.comboBox1.TabIndex = 9;
+            // 
+            // booksDataSet
+            // 
+            this.booksDataSet.DataSetName = "BooksDataSet";
+            this.booksDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // textBox1
             // 
@@ -186,6 +191,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(15, 208);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(154, 17);
+            this.radioButton2.TabIndex = 13;
+            this.radioButton2.Text = "Сортировка по убыванию";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
@@ -198,16 +213,6 @@
             this.radioButton1.Text = "Сортировка по возрастанию";
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(15, 208);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(154, 17);
-            this.radioButton2.TabIndex = 13;
-            this.radioButton2.Text = "Сортировка по убыванию";
-            this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -223,20 +228,6 @@
             this.dataGridView1.TabIndex = 13;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // booksDataSet
-            // 
-            this.booksDataSet.DataSetName = "BooksDataSet";
-            this.booksDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // booksBindingSource
-            // 
-            this.booksBindingSource.DataMember = "books";
-            this.booksBindingSource.DataSource = this.booksDataSet;
-            // 
-            // booksTableAdapter
-            // 
-            this.booksTableAdapter.ClearBeforeFill = true;
-            // 
             // namebookDataGridViewTextBoxColumn
             // 
             this.namebookDataGridViewTextBoxColumn.DataPropertyName = "name_book";
@@ -248,6 +239,15 @@
             this.yearbookDataGridViewTextBoxColumn.DataPropertyName = "year_book";
             this.yearbookDataGridViewTextBoxColumn.HeaderText = "year_book";
             this.yearbookDataGridViewTextBoxColumn.Name = "yearbookDataGridViewTextBoxColumn";
+            // 
+            // booksBindingSource
+            // 
+            this.booksBindingSource.DataMember = "books";
+            this.booksBindingSource.DataSource = this.booksDataSet;
+            // 
+            // booksTableAdapter
+            // 
+            this.booksTableAdapter.ClearBeforeFill = true;
             // 
             // booksDataSetBindingSource
             // 
@@ -276,10 +276,10 @@
             this.Name = "Form6";
             this.Text = "Таблица \"Книги\"(Табличный вид)";
             this.Load += new System.EventHandler(this.Form6_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.booksDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.booksDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);

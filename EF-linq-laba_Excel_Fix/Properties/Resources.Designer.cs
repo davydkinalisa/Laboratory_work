@@ -79,5 +79,15 @@ namespace EF_linq_laba.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        public static byte[] Template_sList17 {
+            get {
+                object obj = ResourceManager.GetObject("Template_sList17", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

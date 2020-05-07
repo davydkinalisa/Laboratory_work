@@ -19,20 +19,27 @@ namespace EF_linq_laba
 
         private void StartForm_Load(object sender, EventArgs e)
         {
+            // no smaller than design time size
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
 
+            // no larger than screen size
+            this.MaximumSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Form1 f1 = new Form1();
+
             f1.Show();
-            
+            this.Close();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             FormAcademicPerformance f2 = new FormAcademicPerformance();
             f2.Show();
+            this.Close();
             
         }
 

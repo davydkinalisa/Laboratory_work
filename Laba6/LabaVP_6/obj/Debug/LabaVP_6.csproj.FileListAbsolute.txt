@@ -9,3 +9,13 @@ C:\Users\User\source\repos\LabaVP_6\LabaVP_6\obj\Debug\LabaVP_6.csproj.CoreCompi
 C:\Users\User\source\repos\LabaVP_6\LabaVP_6\obj\Debug\LabaVP_6.exe
 C:\Users\User\source\repos\LabaVP_6\LabaVP_6\obj\Debug\LabaVP_6.pdb
 C:\Users\User\source\repos\LabaVP_6\LabaVP_6\obj\Debug\LabaVP_6.Form2.resources
+C:\Users\User\Documents\_Lisa\Визуальное программирование\Laba6\LabaVP_6\bin\Debug\LabaVP_6.exe.config
+C:\Users\User\Documents\_Lisa\Визуальное программирование\Laba6\LabaVP_6\bin\Debug\LabaVP_6.exe
+C:\Users\User\Documents\_Lisa\Визуальное программирование\Laba6\LabaVP_6\bin\Debug\LabaVP_6.pdb
+C:\Users\User\Documents\_Lisa\Визуальное программирование\Laba6\LabaVP_6\obj\Debug\LabaVP_6.csprojAssemblyReference.cache
+C:\Users\User\Documents\_Lisa\Визуальное программирование\Laba6\LabaVP_6\obj\Debug\LabaVP_6.Form1.resources
+C:\Users\User\Documents\_Lisa\Визуальное программирование\Laba6\LabaVP_6\obj\Debug\LabaVP_6.Form2.resources
+C:\Users\User\Documents\_Lisa\Визуальное программирование\Laba6\LabaVP_6\obj\Debug\LabaVP_6.Properties.Resources.resources
+C:\Users\User\Documents\_Lisa\Визуальное программирование\Laba6\LabaVP_6\obj\Debug\LabaVP_6.csproj.GenerateResource.cache
+C:\Users\User\Documents\_Lisa\Визуальное программирование\Laba6\LabaVP_6\obj\Debug\LabaVP_6.exe
+C:\Users\User\Documents\_Lisa\Визуальное программирование\Laba6\LabaVP_6\obj\Debug\LabaVP_6.pdb

@@ -124,4 +124,7 @@
   <data name="Template_sList" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Template_sList.xltx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Template_sList17" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Template_sList17.xltx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

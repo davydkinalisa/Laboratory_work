@@ -37,7 +37,11 @@ namespace EF_linq_laba
 
         private void FormEditStudent_Load(object sender, EventArgs e)
         {
+            // no smaller than design time size
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
 
+            // no larger than screen size
+            this.MaximumSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -61,7 +65,7 @@ namespace EF_linq_laba
             this.Close();
         }
         
-        //обработка неправильно введенных символов
+        // обработка неправильно введенных символов
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             string temp = textBox1.Text.Substring(Math.Max(0, textBox1.Text.Length - 1));
@@ -73,6 +77,20 @@ namespace EF_linq_laba
                 textBox1.SelectionStart = textBox1.Text.Length;
 
                 MessageBox.Show("Restricted character enterred!");
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            string temp = textBox2.Text.Substring(Math.Max(0, textBox2.Text.Length - 1));
+
+            if (temp == " " || temp == "_" || temp == "@" || temp == "#" || temp == "1" || temp == "2" || temp == "3" || temp == "4" || temp == "5" || temp == "6" || temp == "7" || temp == "8" || temp == "9" || temp == "0")
+            {
+
+                textBox2.Text = textBox2.Text.Remove((textBox2.Text.Length - 1), 1);
+                textBox2.SelectionStart = textBox2.Text.Length;
+
+                MessageBox.Show("Введён недопустимый символ!");
             }
         }
 
@@ -95,5 +113,7 @@ namespace EF_linq_laba
         {
 
         }
+
+
     }
 }

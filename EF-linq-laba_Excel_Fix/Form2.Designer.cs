@@ -40,6 +40,7 @@
             // 
             // cbDisp
             // 
+            this.cbDisp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDisp.Enabled = false;
             this.cbDisp.FormattingEnabled = true;
             this.cbDisp.Location = new System.Drawing.Point(171, 92);
@@ -71,6 +72,7 @@
             // 
             // CbEstimate
             // 
+            this.CbEstimate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbEstimate.FormattingEnabled = true;
             this.CbEstimate.Items.AddRange(new object[] {
             "1",

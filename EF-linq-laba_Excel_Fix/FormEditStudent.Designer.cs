@@ -41,8 +41,9 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(285, 178);
+            this.comboBox1.Location = new System.Drawing.Point(150, 131);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(165, 21);
             this.comboBox1.TabIndex = 0;
@@ -50,7 +51,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(285, 133);
+            this.textBox1.Location = new System.Drawing.Point(150, 86);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(165, 20);
             this.textBox1.TabIndex = 1;
@@ -58,16 +59,17 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(285, 96);
+            this.textBox2.Location = new System.Drawing.Point(150, 49);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(165, 20);
             this.textBox2.TabIndex = 2;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(178, 96);
+            this.label1.Location = new System.Drawing.Point(43, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 16);
             this.label1.TabIndex = 3;
@@ -77,7 +79,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(178, 134);
+            this.label2.Location = new System.Drawing.Point(43, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 16);
             this.label2.TabIndex = 4;
@@ -87,7 +89,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(178, 179);
+            this.label3.Location = new System.Drawing.Point(43, 132);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 16);
             this.label3.TabIndex = 5;
@@ -95,7 +97,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(181, 235);
+            this.button1.Location = new System.Drawing.Point(46, 188);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(84, 45);
             this.button1.TabIndex = 6;
@@ -105,7 +107,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(417, 235);
+            this.button2.Location = new System.Drawing.Point(282, 188);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 45);
             this.button2.TabIndex = 7;
@@ -115,7 +117,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(285, 235);
+            this.button3.Location = new System.Drawing.Point(150, 188);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(97, 45);
             this.button3.TabIndex = 8;
@@ -127,7 +129,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(434, 304);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

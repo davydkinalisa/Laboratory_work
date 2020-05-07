@@ -13,10 +13,8 @@ namespace LabaVP_6
 {
     public partial class Form2 : Form
     {
-        public Form2()
-        {
-            InitializeComponent();
-        }
+        private Form1 m_MainFrm = null;
+
 
         public Form2(Form1 a, string Title)
         {
@@ -25,6 +23,9 @@ namespace LabaVP_6
             this.textBox1.Text = a.textBox1.Text;
             this.textBox2.Text = a.textBox2.Text;
             this.Text = Title;
+            m_MainFrm = a;
+
+            //a.form1_Visible(true);
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace LabaVP_6
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
             StreamReader reader = new StreamReader("users.txt");
             string line;
@@ -62,13 +63,17 @@ namespace LabaVP_6
                             writer.WriteLine(s);
 
                         //writer.WriteLine(linesOfFile);
+                        
                         writer.Close();
+                        this.Close();
+                        m_MainFrm.form1_Visible(true);
 
+                        
                         break;
 
                     }
                 }
-               
+
             }
             else 
             {
@@ -76,11 +81,27 @@ namespace LabaVP_6
                 MessageBox.Show("Вы не имеете право на это и точка!");
             }
 
+
+
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            // no smaller than design time size
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+
+            // no larger than screen size
+            this.MaximumSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+        }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            m_MainFrm.form1_Visible(true);
         }
     }
 }
