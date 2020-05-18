@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cinemaModel.Store" Provider="Npgsql" ProviderManifestToken="10.11" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="hall">
+    <Key>
+      <PropertyRef Name="hall_id" />
+    </Key>
+    <Property Name="hall_id" Type="int4" Nullable="false" />
+    <Property Name="hall_class" Type="varchar" MaxLength="40" />
+    <Property Name="hall_name" Type="varchar" MaxLength="40" />
+    <Property Name="seats" Type="varchar" MaxLength="120" />
+  </EntityType>
+  <EntityType Name="hall_showtime">
+    <Key>
+      <PropertyRef Name="hsh_id" />
+    </Key>
+    <Property Name="showtime_id" Type="int4" Nullable="false" />
+    <Property Name="hall_id" Type="int4" Nullable="false" />
+    <Property Name="hsh_id" Type="int4" Nullable="false" />
+    <Property Name="seat_map" Type="varchar" MaxLength="120" />
+  </EntityType>
+  <EntityType Name="movie">
+    <Key>
+      <PropertyRef Name="movieid" />
+    </Key>
+    <Property Name="movieid" Type="int4" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="40" />
+    <Property Name="duration" Type="time" Precision="6" />
+    <Property Name="director" Type="varchar" MaxLength="40" />
+    <Property Name="genre" Type="varchar" MaxLength="40" />
+    <Property Name="cast_movie" Type="varchar" MaxLength="100" />
+    <Property Name="year_movie" Type="int4" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="role" />
+    </Key>
+    <Property Name="role" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="login" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="showtime">
+    <Key>
+      <PropertyRef Name="showtime_id" />
+    </Key>
+    <Property Name="showtime_id" Type="int4" Nullable="false" />
+    <Property Name="date" Type="date" />
+    <Property Name="time" Type="time" Precision="6" />
+    <Property Name="price" Type="int4" />
+    <Property Name="movieid" Type="int4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ticket">
+    <Key>
+      <PropertyRef Name="ticket_id" />
+    </Key>
+    <Property Name="ticket_id" Type="int4" Nullable="false" />
+    <Property Name="price" Type="numeric" Precision="19" Scale="4" />
+    <Property Name="seat" Type="varchar" MaxLength="40" />
+    <Property Name="showtime_id" Type="int4" Nullable="false" />
+    <Property Name="role" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="hall_id" Type="int4" />
+  </EntityType>
+  <Association Name="fk_hall_showtime_hall">
+    <End Role="hall" Type="Self.hall" Multiplicity="1" />
+    <End Role="hall_showtime" Type="Self.hall_showtime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hall">
+        <PropertyRef Name="hall_id" />
+      </Principal>
+      <Dependent Role="hall_showtime">
+        <PropertyRef Name="hall_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_hall_showtime_showtime">
+    <End Role="showtime" Type="Self.showtime" Multiplicity="1" />
+    <End Role="hall_showtime" Type="Self.hall_showtime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="showtime">
+        <PropertyRef Name="showtime_id" />
+      </Principal>
+      <Dependent Role="hall_showtime">
+        <PropertyRef Name="showtime_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_showtime_movie">
+    <End Role="movie" Type="Self.movie" Multiplicity="1" />
+    <End Role="showtime" Type="Self.showtime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="movie">
+        <PropertyRef Name="movieid" />
+      </Principal>
+      <Dependent Role="showtime">
+        <PropertyRef Name="movieid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ticket_roles">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="role" />
+      </Principal>
+      <Dependent Role="ticket">
+        <PropertyRef Name="role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ticket_showtime">
+    <End Role="showtime" Type="Self.showtime" Multiplicity="1" />
+    <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="showtime">
+        <PropertyRef Name="showtime_id" />
+      </Principal>
+      <Dependent Role="ticket">
+        <PropertyRef Name="showtime_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="cinemaModelStoreContainer">
+    <EntitySet Name="hall" EntityType="Self.hall" Schema="public" store:Type="Tables" />
+    <EntitySet Name="hall_showtime" EntityType="Self.hall_showtime" Schema="public" store:Type="Tables" />
+    <EntitySet Name="movie" EntityType="Self.movie" Schema="public" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="public" store:Type="Tables" />
+    <EntitySet Name="showtime" EntityType="Self.showtime" Schema="public" store:Type="Tables" />
+    <EntitySet Name="ticket" EntityType="Self.ticket" Schema="public" store:Type="Tables" />
+    <AssociationSet Name="fk_hall_showtime_hall" Association="Self.fk_hall_showtime_hall">
+      <End Role="hall" EntitySet="hall" />
+      <End Role="hall_showtime" EntitySet="hall_showtime" />
+    </AssociationSet>
+    <AssociationSet Name="fk_hall_showtime_showtime" Association="Self.fk_hall_showtime_showtime">
+      <End Role="showtime" EntitySet="showtime" />
+      <End Role="hall_showtime" EntitySet="hall_showtime" />
+    </AssociationSet>
+    <AssociationSet Name="fk_showtime_movie" Association="Self.fk_showtime_movie">
+      <End Role="movie" EntitySet="movie" />
+      <End Role="showtime" EntitySet="showtime" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ticket_roles" Association="Self.fk_ticket_roles">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="ticket" EntitySet="ticket" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ticket_showtime" Association="Self.fk_ticket_showtime">
+      <End Role="showtime" EntitySet="showtime" />
+      <End Role="ticket" EntitySet="ticket" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

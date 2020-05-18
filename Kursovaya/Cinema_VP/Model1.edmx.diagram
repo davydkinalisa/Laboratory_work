@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4169cf5d2ed041f5929a501f7b7eb2b8" Name="Diagram1" ZoomLevel="97">
+        <EntityTypeShape EntityType="cinemaModel.hall" Width="1.5" PointX="7.875" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cinemaModel.hall_showtime" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cinemaModel.movie" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cinemaModel.role" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="cinemaModel.showtime" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cinemaModel.ticket" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="cinemaModel.fk_hall_showtime_hall" ManuallyRouted="false" />
+        <AssociationConnector Association="cinemaModel.fk_hall_showtime_showtime" ManuallyRouted="false" />
+        <AssociationConnector Association="cinemaModel.fk_showtime_movie" ManuallyRouted="false" />
+        <AssociationConnector Association="cinemaModel.fk_ticket_roles" ManuallyRouted="false" />
+        <AssociationConnector Association="cinemaModel.fk_ticket_showtime" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
