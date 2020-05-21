@@ -29,3 +29,4 @@ E:\GitHub\Laboratory_work\kontrolnaya2\kontrolnaya2\kontrolnaya2\obj\Debug\kontr
 E:\GitHub\Laboratory_work\kontrolnaya2\kontrolnaya2\kontrolnaya2\obj\Debug\kontrolnaya2.exe
 E:\GitHub\Laboratory_work\kontrolnaya2\kontrolnaya2\kontrolnaya2\obj\Debug\kontrolnaya2.pdb
 E:\GitHub\Laboratory_work\kontrolnaya2\kontrolnaya2\kontrolnaya2\obj\Debug\kontrolnaya2.Form1.resources
+E:\GitHub\Laboratory_work\kontrolnaya2\kontrolnaya2\kontrolnaya2\obj\Debug\kontrolnaya2.csprojAssemblyReference.cache

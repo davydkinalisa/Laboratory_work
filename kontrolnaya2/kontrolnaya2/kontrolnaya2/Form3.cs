@@ -96,6 +96,8 @@ namespace kontrolnaya2
 
             };
 
+            db.SaveChanges();
+
         }
     }
 }
