@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="postcardModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="postcard">
+    <Key>
+      <PropertyRef Name="postcard_id" />
+    </Key>
+    <Property Name="postcard_id" Type="Int32" Nullable="false" />
+    <Property Name="senser_email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="receiver_email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="picname" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="text_for_postcard" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="postcardEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="postcards" EntityType="Self.postcard" />
+  </EntityContainer>
+</Schema>

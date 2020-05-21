@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="postcardModel.Store" Provider="Npgsql" ProviderManifestToken="10.11" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="postcard">
+    <Key>
+      <PropertyRef Name="postcard_id" />
+    </Key>
+    <Property Name="postcard_id" Type="int4" Nullable="false" />
+    <Property Name="senser_email" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="receiver_email" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="picname" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="text_for_postcard" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="postcardModelStoreContainer">
+    <EntitySet Name="postcard" EntityType="Self.postcard" Schema="public" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

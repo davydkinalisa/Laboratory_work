@@ -1,0 +1,9 @@
+
+
+CREATE TABLE Postcard (
+	postcard_ID INTEGER NOT NULL PRIMARY KEY,
+  Senser_email VARCHAR(40) NOT NULL,
+  Receiver_email VARCHAR(40) NOT NULL,
+  Picname VARCHAR(40) NOT NULL,
+  Text_for_postcard  VARCHAR(200) NOT NULL
+);

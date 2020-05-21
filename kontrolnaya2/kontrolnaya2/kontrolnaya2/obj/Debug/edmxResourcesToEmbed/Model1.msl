@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="postcardModelStoreContainer" CdmEntityContainer="postcardEntities">
+    <EntitySetMapping Name="postcards">
+      <EntityTypeMapping TypeName="postcardModel.postcard">
+        <MappingFragment StoreEntitySet="postcard">
+          <ScalarProperty Name="postcard_id" ColumnName="postcard_id" />
+          <ScalarProperty Name="senser_email" ColumnName="senser_email" />
+          <ScalarProperty Name="receiver_email" ColumnName="receiver_email" />
+          <ScalarProperty Name="picname" ColumnName="picname" />
+          <ScalarProperty Name="text_for_postcard" ColumnName="text_for_postcard" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
