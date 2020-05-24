@@ -22,6 +22,7 @@ namespace kontrolnaya2
 
         private void Form4_Load(object sender, EventArgs e)
         {
+
             studentsheet = (from psd in db.postcards
                             select psd).ToList();
 

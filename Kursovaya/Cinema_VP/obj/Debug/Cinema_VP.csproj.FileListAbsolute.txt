@@ -52,5 +52,5 @@ C:\Users\User\Documents\_Lisa\Визуальное программирован�
 C:\Users\User\Documents\_Lisa\Визуальное программирование\Курсовая ВП\Cinema_VP\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\User\Documents\_Lisa\Визуальное программирование\Курсовая ВП\Cinema_VP\bin\Debug\System.ValueTuple.xml
 C:\Users\User\Documents\_Lisa\Визуальное программирование\Курсовая ВП\Cinema_VP\obj\Debug\Cinema_VP.csproj.CopyComplete
-C:\Users\User\Documents\_Lisa\Визуальное программирование\Курсовая ВП\Cinema_VP\obj\Debug\Cinema_VP.TicketDisplay.resources
+C:\Users\User\Documents\_Lisa\Визуальное программирование\Курсовая ВП\Cinema_VP\obj\Debug\Cinema_VP.EditHallLayout.resources
 C:\Users\User\Documents\_Lisa\Визуальное программирование\Курсовая ВП\Cinema_VP\obj\Debug\Cinema_VP.csprojAssemblyReference.cache

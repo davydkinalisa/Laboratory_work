@@ -33,15 +33,5 @@ namespace Cinema_VP.Properties {
                 return ((string)(this["CinemaConnectionString"]));
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Host=localhost;Database=postcard;Username=postgres;Password=1")]
-        public string postcardConnectionString {
-            get {
-                return ((string)(this["postcardConnectionString"]));
-            }
-        }
     }
 }

@@ -21,6 +21,7 @@ namespace Cinema_VP
         }
     
         public int hall_id { get; set; }
+        public string hall_class { get; set; }
         public string hall_name { get; set; }
         public string seats { get; set; }
     
