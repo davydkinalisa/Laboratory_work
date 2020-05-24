@@ -53,7 +53,6 @@ namespace kontrolnaya2
 
         }
 
-
         public void ShowMyImage(Image fileToDisplay, int xSize, int ySize)
         {
             // выбор картинки при входк в систему для отображения роли
@@ -92,10 +91,10 @@ namespace kontrolnaya2
                 picname = data_for_split[0],
                 senser_email = data_for_split[1],
                 receiver_email = data_for_split[2],
-                //Text_for_postcard = data_for_split[3],
-
+                text_for_postcard = data_for_split[3],
             };
 
+            db.postcards.Add(new_postcard);
             db.SaveChanges();
 
         }

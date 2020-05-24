@@ -5,7 +5,6 @@
       <EntityTypeMapping TypeName="cinemaModel.hall">
         <MappingFragment StoreEntitySet="hall">
           <ScalarProperty Name="hall_id" ColumnName="hall_id" />
-          <ScalarProperty Name="hall_class" ColumnName="hall_class" />
           <ScalarProperty Name="hall_name" ColumnName="hall_name" />
           <ScalarProperty Name="seats" ColumnName="seats" />
         </MappingFragment>

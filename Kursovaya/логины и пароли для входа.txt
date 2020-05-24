@@ -1,0 +1,3 @@
+Администратор: admin | admin
+Управляющий: user1 | user1
+Пользователь: ures | user

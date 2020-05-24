@@ -5,7 +5,6 @@
       <PropertyRef Name="hall_id" />
     </Key>
     <Property Name="hall_id" Type="Int32" Nullable="false" />
-    <Property Name="hall_class" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
     <Property Name="hall_name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
     <Property Name="seats" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="hall_showtime" Relationship="Self.fk_hall_showtime_hall" FromRole="hall" ToRole="hall_showtime" />

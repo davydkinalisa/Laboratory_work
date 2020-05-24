@@ -38,6 +38,10 @@
             this.btnAddDataTab3 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tbxTicketID = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.cmbRowTab1 = new System.Windows.Forms.ComboBox();
+            this.label30 = new System.Windows.Forms.Label();
             this.cmbSeatTab1 = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -67,7 +71,7 @@
             this.cmbTimeTab2 = new System.Windows.Forms.ComboBox();
             this.cmbHallTab2 = new System.Windows.Forms.ComboBox();
             this.cmbTitleFilmTab2 = new System.Windows.Forms.ComboBox();
-            this.txbGenreTab3 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.cmbTimeTab3 = new System.Windows.Forms.ComboBox();
             this.cmbTitleFilmTab3 = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -81,7 +85,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.rtbCastTab3 = new System.Windows.Forms.RichTextBox();
             this.cmbHallTab3 = new System.Windows.Forms.ComboBox();
-            this.button9 = new System.Windows.Forms.Button();
             this.txbDurationTab3 = new System.Windows.Forms.TextBox();
             this.txbYearTab3 = new System.Windows.Forms.TextBox();
             this.txbGenerTab3 = new System.Windows.Forms.TextBox();
@@ -91,6 +94,15 @@
             this.cmbDiscountTab3 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.tbxTicketForUnBook = new System.Windows.Forms.TextBox();
+            this.btnUnBookTab5 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.tbxTicketForReturn = new System.Windows.Forms.TextBox();
+            this.btnReturnTab5 = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -101,30 +113,22 @@
             this.textBox_Login = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.tbxTicketForUnBook = new System.Windows.Forms.TextBox();
-            this.btnUnBookTab5 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.tbxTicketForReturn = new System.Windows.Forms.TextBox();
-            this.btnReturnTab5 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnBuyTicket = new System.Windows.Forms.Button();
             this.Timer_errUser_event = new System.Windows.Forms.Timer(this.components);
+            this.btnExitMainFrm = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.txbGenreTab3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnPlaceOrder
@@ -193,18 +197,23 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.txbGenreTab3);
-            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(20, 172);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(963, 431);
             this.tabControl1.TabIndex = 6;
+            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.MintCream;
+            this.tabPage1.Controls.Add(this.tbxTicketID);
+            this.tabPage1.Controls.Add(this.label31);
+            this.tabPage1.Controls.Add(this.cmbRowTab1);
+            this.tabPage1.Controls.Add(this.label30);
             this.tabPage1.Controls.Add(this.cmbSeatTab1);
             this.tabPage1.Controls.Add(this.label29);
             this.tabPage1.Controls.Add(this.groupBox2);
@@ -233,23 +242,56 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(955, 405);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Оформить заказ";
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            this.tabPage1.Text = "Формирование заказа";
             this.tabPage1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabPage1_MouseDown);
+            // 
+            // tbxTicketID
+            // 
+            this.tbxTicketID.Location = new System.Drawing.Point(663, 229);
+            this.tbxTicketID.Name = "tbxTicketID";
+            this.tbxTicketID.ReadOnly = true;
+            this.tbxTicketID.Size = new System.Drawing.Size(75, 20);
+            this.tbxTicketID.TabIndex = 46;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Agency FB", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(660, 212);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(78, 14);
+            this.label31.TabIndex = 45;
+            this.label31.Text = "Номер билета";
+            // 
+            // cmbRowTab1
+            // 
+            this.cmbRowTab1.FormattingEnabled = true;
+            this.cmbRowTab1.Location = new System.Drawing.Point(663, 291);
+            this.cmbRowTab1.Name = "cmbRowTab1";
+            this.cmbRowTab1.Size = new System.Drawing.Size(48, 21);
+            this.cmbRowTab1.TabIndex = 43;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(669, 275);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(26, 13);
+            this.label30.TabIndex = 42;
+            this.label30.Text = "Ряд";
             // 
             // cmbSeatTab1
             // 
             this.cmbSeatTab1.FormattingEnabled = true;
-            this.cmbSeatTab1.Location = new System.Drawing.Point(672, 291);
+            this.cmbSeatTab1.Location = new System.Drawing.Point(725, 291);
             this.cmbSeatTab1.Name = "cmbSeatTab1";
-            this.cmbSeatTab1.Size = new System.Drawing.Size(83, 21);
+            this.cmbSeatTab1.Size = new System.Drawing.Size(48, 21);
             this.cmbSeatTab1.TabIndex = 41;
-            this.cmbSeatTab1.SelectedIndexChanged += new System.EventHandler(this.cmbSeatTab1_SelectedIndexChanged);
             // 
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(669, 266);
+            this.label29.Location = new System.Drawing.Point(722, 275);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(39, 13);
             this.label29.TabIndex = 40;
@@ -282,7 +324,6 @@
             this.rtbCastTab1.Size = new System.Drawing.Size(109, 90);
             this.rtbCastTab1.TabIndex = 38;
             this.rtbCastTab1.Text = "";
-            this.rtbCastTab1.TextChanged += new System.EventHandler(this.rtbCastTab1_TextChanged);
             // 
             // label19
             // 
@@ -351,7 +392,6 @@
             this.txbDurationTab1.Size = new System.Drawing.Size(49, 20);
             this.txbDurationTab1.TabIndex = 28;
             this.txbDurationTab1.Text = "Продолжительность";
-            this.txbDurationTab1.TextChanged += new System.EventHandler(this.txbDurationTab1_TextChanged_1);
             // 
             // txbYearTab1
             // 
@@ -360,7 +400,6 @@
             this.txbYearTab1.Size = new System.Drawing.Size(49, 20);
             this.txbYearTab1.TabIndex = 27;
             this.txbYearTab1.Text = "Год выхода фильма";
-            this.txbYearTab1.TextChanged += new System.EventHandler(this.txbYearTab1_TextChanged);
             // 
             // txbGenerTab1
             // 
@@ -369,7 +408,6 @@
             this.txbGenerTab1.Size = new System.Drawing.Size(109, 20);
             this.txbGenerTab1.TabIndex = 26;
             this.txbGenerTab1.Text = "Жанр";
-            this.txbGenerTab1.TextChanged += new System.EventHandler(this.txbGenerTab1_TextChanged);
             // 
             // txbDirectorTab1
             // 
@@ -378,7 +416,6 @@
             this.txbDirectorTab1.Size = new System.Drawing.Size(109, 20);
             this.txbDirectorTab1.TabIndex = 25;
             this.txbDirectorTab1.Text = "Режиссёр";
-            this.txbDirectorTab1.TextChanged += new System.EventHandler(this.txbDirectorTab1_TextChanged);
             // 
             // label9
             // 
@@ -456,7 +493,6 @@
             this.tabPage2.Size = new System.Drawing.Size(955, 405);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Информация о сеансах";
-            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // btnClearList
             // 
@@ -472,7 +508,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(496, 19);
+            this.label8.Location = new System.Drawing.Point(339, 19);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(88, 15);
             this.label8.TabIndex = 18;
@@ -482,7 +518,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(353, 18);
+            this.label7.Location = new System.Drawing.Point(578, 21);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 15);
             this.label7.TabIndex = 17;
@@ -501,18 +537,17 @@
             // cmbTimeTab2
             // 
             this.cmbTimeTab2.FormattingEnabled = true;
-            this.cmbTimeTab2.Location = new System.Drawing.Point(595, 18);
+            this.cmbTimeTab2.Location = new System.Drawing.Point(438, 18);
             this.cmbTimeTab2.Name = "cmbTimeTab2";
             this.cmbTimeTab2.Size = new System.Drawing.Size(75, 21);
             this.cmbTimeTab2.TabIndex = 7;
-            this.cmbTimeTab2.Text = "Время";
             this.cmbTimeTab2.SelectedIndexChanged += new System.EventHandler(this.cmbTimeTab2_SelectedIndexChanged);
             // 
             // cmbHallTab2
             // 
             this.cmbHallTab2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbHallTab2.FormattingEnabled = true;
-            this.cmbHallTab2.Location = new System.Drawing.Point(388, 18);
+            this.cmbHallTab2.Location = new System.Drawing.Point(613, 21);
             this.cmbHallTab2.Name = "cmbHallTab2";
             this.cmbHallTab2.Size = new System.Drawing.Size(75, 21);
             this.cmbHallTab2.TabIndex = 6;
@@ -529,43 +564,41 @@
             this.cmbTitleFilmTab2.Name = "cmbTitleFilmTab2";
             this.cmbTitleFilmTab2.Size = new System.Drawing.Size(177, 21);
             this.cmbTitleFilmTab2.TabIndex = 5;
-            this.cmbTitleFilmTab2.Text = "Фильм";
             this.cmbTitleFilmTab2.SelectedIndexChanged += new System.EventHandler(this.cmbTitleFilmTab2_SelectedIndexChanged);
             // 
-            // txbGenreTab3
+            // tabPage3
             // 
-            this.txbGenreTab3.BackColor = System.Drawing.Color.MintCream;
-            this.txbGenreTab3.Controls.Add(this.cmbTimeTab3);
-            this.txbGenreTab3.Controls.Add(this.cmbTitleFilmTab3);
-            this.txbGenreTab3.Controls.Add(this.dateTimePicker1);
-            this.txbGenreTab3.Controls.Add(this.label26);
-            this.txbGenreTab3.Controls.Add(this.label25);
-            this.txbGenreTab3.Controls.Add(this.txbPriceTab3);
-            this.txbGenreTab3.Controls.Add(this.label24);
-            this.txbGenreTab3.Controls.Add(this.label23);
-            this.txbGenreTab3.Controls.Add(this.label22);
-            this.txbGenreTab3.Controls.Add(this.label21);
-            this.txbGenreTab3.Controls.Add(this.label20);
-            this.txbGenreTab3.Controls.Add(this.rtbCastTab3);
-            this.txbGenreTab3.Controls.Add(this.cmbHallTab3);
-            this.txbGenreTab3.Controls.Add(this.button9);
-            this.txbGenreTab3.Controls.Add(this.txbDurationTab3);
-            this.txbGenreTab3.Controls.Add(this.txbYearTab3);
-            this.txbGenreTab3.Controls.Add(this.txbGenerTab3);
-            this.txbGenreTab3.Controls.Add(this.txbDirectorTab3);
-            this.txbGenreTab3.Controls.Add(this.label5);
-            this.txbGenreTab3.Controls.Add(this.label4);
-            this.txbGenreTab3.Controls.Add(this.cmbDiscountTab3);
-            this.txbGenreTab3.Controls.Add(this.label3);
-            this.txbGenreTab3.Controls.Add(this.label2);
-            this.txbGenreTab3.Controls.Add(this.btnAddDataTab3);
-            this.txbGenreTab3.Enabled = false;
-            this.txbGenreTab3.Location = new System.Drawing.Point(4, 22);
-            this.txbGenreTab3.Name = "txbGenreTab3";
-            this.txbGenreTab3.Padding = new System.Windows.Forms.Padding(3);
-            this.txbGenreTab3.Size = new System.Drawing.Size(955, 405);
-            this.txbGenreTab3.TabIndex = 2;
-            this.txbGenreTab3.Text = "Внесение данных";
+            this.tabPage3.BackColor = System.Drawing.Color.MintCream;
+            this.tabPage3.Controls.Add(this.cmbTimeTab3);
+            this.tabPage3.Controls.Add(this.cmbTitleFilmTab3);
+            this.tabPage3.Controls.Add(this.dateTimePicker1);
+            this.tabPage3.Controls.Add(this.label26);
+            this.tabPage3.Controls.Add(this.label25);
+            this.tabPage3.Controls.Add(this.txbPriceTab3);
+            this.tabPage3.Controls.Add(this.label24);
+            this.tabPage3.Controls.Add(this.label23);
+            this.tabPage3.Controls.Add(this.label22);
+            this.tabPage3.Controls.Add(this.label21);
+            this.tabPage3.Controls.Add(this.label20);
+            this.tabPage3.Controls.Add(this.rtbCastTab3);
+            this.tabPage3.Controls.Add(this.cmbHallTab3);
+            this.tabPage3.Controls.Add(this.txbDurationTab3);
+            this.tabPage3.Controls.Add(this.txbYearTab3);
+            this.tabPage3.Controls.Add(this.txbGenerTab3);
+            this.tabPage3.Controls.Add(this.txbDirectorTab3);
+            this.tabPage3.Controls.Add(this.label5);
+            this.tabPage3.Controls.Add(this.label4);
+            this.tabPage3.Controls.Add(this.cmbDiscountTab3);
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Controls.Add(this.label2);
+            this.tabPage3.Controls.Add(this.btnAddDataTab3);
+            this.tabPage3.Enabled = false;
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(955, 405);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Внесение информации";
             // 
             // cmbTimeTab3
             // 
@@ -617,7 +650,6 @@
             this.txbPriceTab3.Name = "txbPriceTab3";
             this.txbPriceTab3.Size = new System.Drawing.Size(91, 20);
             this.txbPriceTab3.TabIndex = 45;
-            this.txbPriceTab3.TextChanged += new System.EventHandler(this.txbPriceTab3_TextChanged);
             // 
             // label24
             // 
@@ -627,7 +659,6 @@
             this.label24.Size = new System.Drawing.Size(46, 13);
             this.label24.TabIndex = 44;
             this.label24.Text = "В ролях";
-            this.label24.Click += new System.EventHandler(this.label24_Click);
             // 
             // label23
             // 
@@ -672,7 +703,6 @@
             this.rtbCastTab3.Size = new System.Drawing.Size(100, 96);
             this.rtbCastTab3.TabIndex = 39;
             this.rtbCastTab3.Text = "";
-            this.rtbCastTab3.TextChanged += new System.EventHandler(this.rtbCastTab3_TextChanged);
             // 
             // cmbHallTab3
             // 
@@ -681,17 +711,6 @@
             this.cmbHallTab3.Name = "cmbHallTab3";
             this.cmbHallTab3.Size = new System.Drawing.Size(91, 21);
             this.cmbHallTab3.TabIndex = 38;
-            this.cmbHallTab3.SelectedIndexChanged += new System.EventHandler(this.cmbHallTab3_SelectedIndexChanged);
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(807, 18);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(130, 58);
-            this.button9.TabIndex = 35;
-            this.button9.Text = "Редактировать расположение мест в зале";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // txbDurationTab3
             // 
@@ -699,7 +718,6 @@
             this.txbDurationTab3.Name = "txbDurationTab3";
             this.txbDurationTab3.Size = new System.Drawing.Size(109, 20);
             this.txbDurationTab3.TabIndex = 33;
-            this.txbDurationTab3.TextChanged += new System.EventHandler(this.txbDurationTab3_TextChanged);
             // 
             // txbYearTab3
             // 
@@ -707,7 +725,6 @@
             this.txbYearTab3.Name = "txbYearTab3";
             this.txbYearTab3.Size = new System.Drawing.Size(109, 20);
             this.txbYearTab3.TabIndex = 32;
-            this.txbYearTab3.TextChanged += new System.EventHandler(this.txbYearTab3_TextChanged);
             // 
             // txbGenerTab3
             // 
@@ -715,7 +732,6 @@
             this.txbGenerTab3.Name = "txbGenerTab3";
             this.txbGenerTab3.Size = new System.Drawing.Size(109, 20);
             this.txbGenerTab3.TabIndex = 31;
-            this.txbGenerTab3.TextChanged += new System.EventHandler(this.txbGenerTab3_TextChanged);
             // 
             // txbDirectorTab3
             // 
@@ -723,7 +739,6 @@
             this.txbDirectorTab3.Name = "txbDirectorTab3";
             this.txbDirectorTab3.Size = new System.Drawing.Size(109, 20);
             this.txbDirectorTab3.TabIndex = 30;
-            this.txbDirectorTab3.TextChanged += new System.EventHandler(this.txbDirectorTab3_TextChanged);
             // 
             // label5
             // 
@@ -734,7 +749,6 @@
             this.label5.Size = new System.Drawing.Size(54, 15);
             this.label5.TabIndex = 17;
             this.label5.Text = "Скидка";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -745,21 +759,20 @@
             this.label4.Size = new System.Drawing.Size(32, 15);
             this.label4.TabIndex = 16;
             this.label4.Text = "Зал";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // cmbDiscountTab3
             // 
             this.cmbDiscountTab3.FormattingEnabled = true;
             this.cmbDiscountTab3.Items.AddRange(new object[] {
+            "00%",
             "10%",
             "15%",
-            " 20%"});
+            "20%"});
             this.cmbDiscountTab3.Location = new System.Drawing.Point(156, 241);
             this.cmbDiscountTab3.Name = "cmbDiscountTab3";
             this.cmbDiscountTab3.Size = new System.Drawing.Size(91, 21);
             this.cmbDiscountTab3.TabIndex = 15;
-            this.cmbDiscountTab3.Text = "0";
-            this.cmbDiscountTab3.SelectedIndexChanged += new System.EventHandler(this.cmbDiscountTab3_SelectedIndexChanged);
+            this.cmbDiscountTab3.Text = "00%";
             // 
             // label3
             // 
@@ -780,6 +793,95 @@
             this.label2.Size = new System.Drawing.Size(130, 15);
             this.label2.TabIndex = 10;
             this.label2.Text = "Название фильма";
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.Color.AliceBlue;
+            this.tabPage5.Controls.Add(this.groupBox4);
+            this.tabPage5.Controls.Add(this.groupBox3);
+            this.tabPage5.Enabled = false;
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(955, 405);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Возврат";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label28);
+            this.groupBox4.Controls.Add(this.tbxTicketForUnBook);
+            this.groupBox4.Controls.Add(this.btnUnBookTab5);
+            this.groupBox4.Location = new System.Drawing.Point(639, 113);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(279, 234);
+            this.groupBox4.TabIndex = 20;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Снятие брони";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(96, 47);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(79, 13);
+            this.label28.TabIndex = 21;
+            this.label28.Text = "Номер билета";
+            // 
+            // tbxTicketForUnBook
+            // 
+            this.tbxTicketForUnBook.Location = new System.Drawing.Point(59, 72);
+            this.tbxTicketForUnBook.Name = "tbxTicketForUnBook";
+            this.tbxTicketForUnBook.Size = new System.Drawing.Size(160, 20);
+            this.tbxTicketForUnBook.TabIndex = 20;
+            // 
+            // btnUnBookTab5
+            // 
+            this.btnUnBookTab5.Location = new System.Drawing.Point(79, 168);
+            this.btnUnBookTab5.Name = "btnUnBookTab5";
+            this.btnUnBookTab5.Size = new System.Drawing.Size(120, 48);
+            this.btnUnBookTab5.TabIndex = 17;
+            this.btnUnBookTab5.Text = "Снять бронь";
+            this.btnUnBookTab5.UseVisualStyleBackColor = true;
+            this.btnUnBookTab5.Click += new System.EventHandler(this.btnUnBookTab5_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label27);
+            this.groupBox3.Controls.Add(this.tbxTicketForReturn);
+            this.groupBox3.Controls.Add(this.btnReturnTab5);
+            this.groupBox3.Location = new System.Drawing.Point(22, 113);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(279, 234);
+            this.groupBox3.TabIndex = 19;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Возврат билета";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(92, 47);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(79, 13);
+            this.label27.TabIndex = 19;
+            this.label27.Text = "Номер билета";
+            // 
+            // tbxTicketForReturn
+            // 
+            this.tbxTicketForReturn.Location = new System.Drawing.Point(55, 72);
+            this.tbxTicketForReturn.Name = "tbxTicketForReturn";
+            this.tbxTicketForReturn.Size = new System.Drawing.Size(160, 20);
+            this.tbxTicketForReturn.TabIndex = 18;
+            // 
+            // btnReturnTab5
+            // 
+            this.btnReturnTab5.Location = new System.Drawing.Point(78, 168);
+            this.btnReturnTab5.Name = "btnReturnTab5";
+            this.btnReturnTab5.Size = new System.Drawing.Size(120, 48);
+            this.btnReturnTab5.TabIndex = 17;
+            this.btnReturnTab5.Text = "вернуть билет";
+            this.btnReturnTab5.UseVisualStyleBackColor = true;
+            this.btnReturnTab5.Click += new System.EventHandler(this.btnReturnTab5_Click);
             // 
             // tabPage4
             // 
@@ -891,97 +993,6 @@
             this.label12.TabIndex = 11;
             this.label12.Text = "Логин";
             // 
-            // tabPage5
-            // 
-            this.tabPage5.BackColor = System.Drawing.Color.AliceBlue;
-            this.tabPage5.Controls.Add(this.groupBox4);
-            this.tabPage5.Controls.Add(this.groupBox3);
-            this.tabPage5.Enabled = false;
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(955, 405);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Возврат";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.label28);
-            this.groupBox4.Controls.Add(this.tbxTicketForUnBook);
-            this.groupBox4.Controls.Add(this.btnUnBookTab5);
-            this.groupBox4.Location = new System.Drawing.Point(639, 113);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(279, 234);
-            this.groupBox4.TabIndex = 20;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Снятие брони";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(96, 47);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(79, 13);
-            this.label28.TabIndex = 21;
-            this.label28.Text = "Номер билета";
-            // 
-            // tbxTicketForUnBook
-            // 
-            this.tbxTicketForUnBook.Location = new System.Drawing.Point(59, 72);
-            this.tbxTicketForUnBook.Name = "tbxTicketForUnBook";
-            this.tbxTicketForUnBook.Size = new System.Drawing.Size(160, 20);
-            this.tbxTicketForUnBook.TabIndex = 20;
-            this.tbxTicketForUnBook.TextChanged += new System.EventHandler(this.tbxTicketForUnBook_TextChanged);
-            // 
-            // btnUnBookTab5
-            // 
-            this.btnUnBookTab5.Location = new System.Drawing.Point(79, 168);
-            this.btnUnBookTab5.Name = "btnUnBookTab5";
-            this.btnUnBookTab5.Size = new System.Drawing.Size(120, 48);
-            this.btnUnBookTab5.TabIndex = 17;
-            this.btnUnBookTab5.Text = "Снять бронь";
-            this.btnUnBookTab5.UseVisualStyleBackColor = true;
-            this.btnUnBookTab5.Click += new System.EventHandler(this.btnUnBookTab5_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label27);
-            this.groupBox3.Controls.Add(this.tbxTicketForReturn);
-            this.groupBox3.Controls.Add(this.btnReturnTab5);
-            this.groupBox3.Location = new System.Drawing.Point(22, 113);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(279, 234);
-            this.groupBox3.TabIndex = 19;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Возврат билета";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(92, 47);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(79, 13);
-            this.label27.TabIndex = 19;
-            this.label27.Text = "Номер билета";
-            // 
-            // tbxTicketForReturn
-            // 
-            this.tbxTicketForReturn.Location = new System.Drawing.Point(55, 72);
-            this.tbxTicketForReturn.Name = "tbxTicketForReturn";
-            this.tbxTicketForReturn.Size = new System.Drawing.Size(160, 20);
-            this.tbxTicketForReturn.TabIndex = 18;
-            this.tbxTicketForReturn.TextChanged += new System.EventHandler(this.tbxTicketForReturn_TextChanged);
-            // 
-            // btnReturnTab5
-            // 
-            this.btnReturnTab5.Location = new System.Drawing.Point(78, 168);
-            this.btnReturnTab5.Name = "btnReturnTab5";
-            this.btnReturnTab5.Size = new System.Drawing.Size(120, 48);
-            this.btnReturnTab5.TabIndex = 17;
-            this.btnReturnTab5.Text = "вернуть билет";
-            this.btnReturnTab5.UseVisualStyleBackColor = true;
-            this.btnReturnTab5.Click += new System.EventHandler(this.btnReturnTab5_Click);
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -1013,6 +1024,17 @@
             this.Timer_errUser_event.Interval = 200;
             this.Timer_errUser_event.Tick += new System.EventHandler(this.Timer_errUser_event_Tick);
             // 
+            // btnExitMainFrm
+            // 
+            this.btnExitMainFrm.Location = new System.Drawing.Point(721, 21);
+            this.btnExitMainFrm.Name = "btnExitMainFrm";
+            this.btnExitMainFrm.Size = new System.Drawing.Size(102, 33);
+            this.btnExitMainFrm.TabIndex = 17;
+            this.btnExitMainFrm.Text = "Выход";
+            this.btnExitMainFrm.UseVisualStyleBackColor = true;
+            this.btnExitMainFrm.Visible = false;
+            this.btnExitMainFrm.Click += new System.EventHandler(this.btnExitMainFrm_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1020,6 +1042,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(995, 630);
+            this.Controls.Add(this.btnExitMainFrm);
             this.Controls.Add(this.btnBuyTicket);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.tabControl1);
@@ -1029,7 +1052,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Заказ билета в кинотеатр - Гость";
+            this.Text = "Заказ билета в кинотеатр - Вход не выполнен";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -1038,17 +1061,17 @@
             this.groupBox2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.txbGenreTab3.ResumeLayout(false);
-            this.txbGenreTab3.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1068,12 +1091,10 @@
         private System.Windows.Forms.ComboBox cmbTimeTab2;
         private System.Windows.Forms.ComboBox cmbHallTab2;
         private System.Windows.Forms.ComboBox cmbTitleFilmTab2;
-        private System.Windows.Forms.TabPage txbGenreTab3;
+        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cmbTimeTab1;
-        private System.Windows.Forms.ComboBox cmbTitleFilmTab1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -1085,7 +1106,6 @@
         private System.Windows.Forms.TextBox txbDurationTab1;
         private System.Windows.Forms.TextBox txbYearTab1;
         private System.Windows.Forms.TextBox txbGenerTab1;
-        private System.Windows.Forms.TextBox txbDirectorTab1;
         private System.Windows.Forms.TextBox txbDurationTab3;
         private System.Windows.Forms.TextBox txbYearTab3;
         private System.Windows.Forms.TextBox txbGenerTab3;
@@ -1104,7 +1124,6 @@
         private System.Windows.Forms.Button btnLoginEnter;
         private System.Windows.Forms.Label label_wrongLogin;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button btnClearList;
         private System.Windows.Forms.Button btnClearTab1;
         private System.Windows.Forms.Label lblPrice;
@@ -1140,6 +1159,14 @@
         private System.Windows.Forms.ComboBox cmbHallTab1;
         private System.Windows.Forms.ComboBox cmbSeatTab1;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Button btnExitMainFrm;
+        private System.Windows.Forms.ComboBox cmbRowTab1;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox tbxTicketID;
+        public System.Windows.Forms.ComboBox cmbTitleFilmTab1;
+        public System.Windows.Forms.ComboBox cmbTimeTab1;
+        public System.Windows.Forms.TextBox txbDirectorTab1;
     }
 }
 
