@@ -1,0 +1,112 @@
+CREATE TABLE Movie (
+  movieID INTEGER NOT NULL,
+  Title VARCHAR(40),
+  Duration TIME,
+  Director VARCHAR(40),
+  Genre VARCHAR(40),
+  Cast_movie VARCHAR(100),
+  year_movie INTEGER,
+  CONSTRAINT PK_Movie PRIMARY KEY (movieID)
+);
+
+CREATE TABLE Hall (
+  Hall_ID INTEGER NOT NULL,
+  hall_Name VARCHAR(40),
+  Seats VARCHAR(120),
+  CONSTRAINT PK_Hall PRIMARY KEY (Hall_ID)
+);
+
+CREATE TABLE Showtime (
+  Showtime_ID INTEGER NOT NULL,
+  Date DATE,
+  Time TIME,
+  Price NUMERIC,
+  movieID INTEGER NOT NULL,
+  CONSTRAINT PK_Showtime PRIMARY KEY (Showtime_ID)
+);
+
+CREATE TABLE Hall_Showtime (
+  hSh_ID INTEGER NOT NULL,
+  Showtime_ID INTEGER NOT NULL,
+  Hall_ID INTEGER NOT NULL,
+  seat_map VARCHAR(120),
+  CONSTRAINT PK_Hall_Showtime PRIMARY KEY (Showtime_ID, Hall_ID, hSh_ID)
+);
+
+
+CREATE TABLE Roles (
+  Role VARCHAR(40) NOT NULL,
+  Login VARCHAR(40) NOT NULL,
+  Password VARCHAR(40) NOT NULL,
+  CONSTRAINT PK_Roles PRIMARY KEY (Role)
+);
+
+CREATE TABLE Ticket (
+  Ticket_ID INTEGER NOT NULL,
+  Hall_ID INTEGER,
+  Price NUMERIC,
+  Seat VARCHAR(40),
+  Showtime_ID INTEGER NOT NULL,
+  Role VARCHAR(40) NOT NULL,
+  CONSTRAINT PK_Ticket PRIMARY KEY (Ticket_ID)
+);
+
+
+/*================================================================================*/
+/* CREATE FOREIGN KEYS                                                            */
+/*================================================================================*/
+
+ALTER TABLE Showtime
+  ADD CONSTRAINT FK_Showtime_Movie
+  FOREIGN KEY (movieID) REFERENCES Movie (movieID);
+
+ALTER TABLE Hall_Showtime
+  ADD CONSTRAINT FK_Hall_Showtime_Showtime
+  FOREIGN KEY (Showtime_ID) REFERENCES Showtime (Showtime_ID);
+
+ALTER TABLE Hall_Showtime
+  ADD CONSTRAINT FK_Hall_Showtime_Hall
+  FOREIGN KEY (Hall_ID) REFERENCES Hall (Hall_ID);
+
+ALTER TABLE Ticket
+  ADD CONSTRAINT FK_Ticket_Showtime
+  FOREIGN KEY (Showtime_ID) REFERENCES Showtime (Showtime_ID);
+
+ALTER TABLE Ticket
+  ADD CONSTRAINT FK_Ticket_Roles
+  FOREIGN KEY (Role) REFERENCES Roles (Role);
+
+Insert into Movie Values(1,'Интерстеллар','2:49','Кристофер Нолан','фантастика','Мэттью МакКонахи, Энн Хэтэуэй, Джессика Честейн',2014);
+Insert into Movie Values(2,'Список Шиндлера','3:15','Стивен Спилберг','драма','Лиам Нисон, Бен Кингсли, Рэйф Файнс, Кэролайн Гудолл',1993);
+Insert into Movie Values(3,'1+1','01:52','Оливье Накаш','комедия','Франсуа Клюзе, Омар Си, Анн Ле Ни, Одри Флеро, Жозефин де Мо, Клотильд Молле',2011);
+Insert into Movie Values(4,'Король Лев','1:28','Роджер Аллерс','мультфильм','Мэттью Бродерик, Джереми Айронс, Нэйтан Лейн, Эрни Сабелла, Джеймс Эрл Джонс',2019);
+
+Insert into Showtime Values(1,'05-06-2020','15:00','230',1);
+Insert into Showtime Values(2,'05-10-2020','18:20','300',2);
+Insert into Showtime Values(3,'05-12-2020','10:50','150',3);
+Insert into Showtime Values(4,'05-02-2020','10:00','120',4);
+Insert into Showtime Values(5,'05-02-2020','12:15','180',5);
+Insert into Showtime Values(6,'05-15-2020','12:05','180',6);
+Insert into Showtime Values(7,'05-16-2020','18:10','280',7);
+Insert into Showtime Values(8,'06-01-2020','19:10','300',8);
+
+
+Insert into Hall Values(201,'red', '0,0,0,1,1,1,1,0,0,0,0,0,0,1,1,1,1,0,0,0,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,1,4,1,1,1,1,1,3,1');
+Insert into Hall Values(202,'green', '0,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,1,4,1,1,1,4,1,4,1');
+Insert into Hall Values(203,'blue', '0,0,0,1,1,1,1,0,0,0,3,1,0,1,1,1,1,0,3,1,2,2,1,2,2,1,2,2,1,1,1,1,2,2,1,2,2,1,1,2,4,1,4,1,1,1,1,1,3,1');
+
+Insert into Ticket Values(100001,201,0,'1,1',101, 'USER');
+
+Insert into Roles Values('admin','admin','admin');
+Insert into Roles Values('user','user','user');
+Insert into Roles Values('user1','user1','user1');
+
+Insert into Hall_Showtime Values(1,1,201, '0,2,2,2,2,2,2,0,0,0,2,2,1,1,1,1,1,2,0,0,2,1,1,2,0,0,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1');
+Insert into Hall_Showtime Values(2,2,201, '0,2,2,2,2,2,2,0,0,0,2,2,1,1,1,1,1,2,0,0,2,1,1,2,0,0,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1');
+Insert into Hall_Showtime Values(3,3,203, '0,0,0,1,1,1,1,0,0,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1');
+Insert into Hall_Showtime Values(4,4,203, '0,0,0,1,1,1,1,0,0,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,1,2,2,2,1,1,1,1,1');
+Insert into Hall_Showtime Values(6,6,203, '0,0,0,1,1,1,1,0,0,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1');
+Insert into Hall_Showtime Values(7,7,203, '0,0,0,2,2,1,1,0,0,0,1,1,1,1,1,1,1,0,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,2');
+Insert into Hall_Showtime Values(8,8,201, '0,0,1,1,1,1,1,0,0,0,1,1,1,1,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,1,1,1,1,0,0,1,1,1,1,2,1,1,1,1,1,1,1,1,1');
+Insert into Hall_Showtime Values(8,8,201, '0,0,2,1,1,1,1,0,0,0,1,1,1,1,1,1,1,1,0,0,1,1,1,1,0,0,2,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1');
+
