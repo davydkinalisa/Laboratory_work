@@ -18,7 +18,7 @@ namespace Cinema_VP
         public int seats_array_index = 0;
         int hall_ID = 0;
 
-        databaseAccess dbAccess = new databaseAccess();
+        databaseAccess dbAccess = new databaseAccess(); //класс обращения к бд
 
         public Form1()
         {
@@ -55,7 +55,7 @@ namespace Cinema_VP
             formGraphics.Dispose();  //удаляем обьект рисования
         }
 
-        /* принцип кодирования мест: 0-нет места 1-место не занято, 2-место занято, 3- диванчик, 4- диванчик занятый */
+        /* принцип кодирования мест: 0-нет места 1-место не занято, 2-место занято */
         public void draw_seatMap(string Map, TabPage Tab_Page)
         {
             int i = 0;
@@ -66,17 +66,17 @@ namespace Cinema_VP
 
             Graphics g = Tab_Page.CreateGraphics();
 
-            g.DrawRectangle(Pens.Red, 175, 50, 350, 20);    // рисуем экран зрительного зала
+            g.DrawRectangle(Pens.Red, 175, 50, 350, 20);    // рисуем экран зрительного зала(начало координат экрана )
 
-            for (int y = 100; y < 400; y += 60)             // рисуем места
+            for (int y = 100; y < 400; y += 60)             // рисуем места на поле для рисования задаём y от 100 до 400
             {
 
-                for (int x = 100; x < 600; x += 50)
+                for (int x = 100; x < 600; x += 50)  // рисуем места по x с шагом 50 пикселей
                 {
 
                     if (seat[i] == "1")
                     {
-                        g.DrawRectangle(Pens.Green, x, y, 40, 40);
+                        g.DrawRectangle(Pens.Green, x, y, 40, 40); //не занятое место
                     }
 
                     if (seat[i] == "2")
@@ -87,20 +87,20 @@ namespace Cinema_VP
                     if (seat[i] == "5") // это место выбрано для оформления билета 
                     {
                         g.DrawRectangle(Pens.Red, x, y, 40, 40);
-                        g.DrawRectangle(Pens.Red, x + 3, y + 3, 34, 34);
+                        g.DrawRectangle(Pens.Red, x + 3, y + 3, 34, 34); //рисуем второй красный квадрат на 6 пикселей меньше
                     }
 
                     if (seat[i] == "3")
                     {
-                        g.DrawRectangle(Pens.Green, x, y, 90, 40);
+                        g.DrawRectangle(Pens.Green, x, y, 90, 40); //рисуем свободный диванчик
                         x += 50;
                         i++;
                     }
 
                     if (seat[i] == "4")
                     {
-                        g.DrawRectangle(Pens.Red, x, y, 90, 40);
-                        x += 50;
+                        g.DrawRectangle(Pens.Red, x, y, 90, 40); //рисуем занятый диванчик
+                            x += 50; //передвигаемся на один шаг вправо для след.нарисовки
                         i++;
                     }
 
@@ -153,7 +153,7 @@ namespace Cinema_VP
         /* функция добавления распределения мест в зале */
         void Add_to_seats(string seats)
         {
-            seats_array[seats_array_index] = seats;
+            seats_array[seats_array_index] = seats; //заполнение массива мест в зале из бд
             seats_array_index++;
         }
 
@@ -224,7 +224,7 @@ namespace Cinema_VP
         {
             if (roleIndex == "Администратор" || roleIndex == "Пользователь")
             {
-                tabControl1.SelectedTab = tabPage5;
+                tabControl1.SelectedTab = tabPage5; //возвращает на логин,если не вошёл в систему
             }
             else
             {
@@ -368,7 +368,7 @@ namespace Cinema_VP
             }
         }
 
-        public class login
+        public class login //класс логина и пароля
         {
             public login()
             {
@@ -441,47 +441,7 @@ namespace Cinema_VP
         // событие выбора времени
         private void cmbTimeTab2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //int[] sh_ID = new int[10];
-            //int i = 0;
-            //int temp = 0;
-
-            //// запрос поиска с отбором по названию фильма
-            //var query = (from movie in db.movies
-            //             join st in db.showtimes on movie.movieid equals st.movieid
-            //             orderby movie.title
-            //             where (st.time.ToString() == cmbTimeTab2.Text.ToString())
-            //             select new { movie.title, movie.duration, movie.director, movie.genre, movie.cast_movie, st.time, st.showtime_id }).Distinct();
-
-            //cmbTitleFilmTab2.Items.Clear();
-            //cmbHallTab2.Items.Clear();
-            //tbxTicketID.Clear();
-
-            //// заполнение combobox о фильме
-            //foreach (var item in query.OrderBy(o => o.title))
-            //{
-            //    i++;
-            //    sh_ID[i] = item.showtime_id;
-            //    cmbTitleFilmTab2.Items.Add(item.title.ToString());
-            //}
-
-            //while (i > 0)
-            //{
-            //    temp = sh_ID[i];
-
-            //    var query1 = (from g in db.hall_showtime
-            //                  where g.showtime_id == temp
-            //                  select g.hall_id).Distinct();
-
-            //    var query2 = (from g in db.halls
-            //                  where g.hall_id == query1.FirstOrDefault()
-            //                  select g.hall_name).Distinct();
-
-            //    foreach (string item in query2)
-            //    {
-            //        cmbHallTab2.Items.Add(item);
-            //    }
-            //    i--;
-            //}
+            
         }
 
         // Выбор фильма на 1 вкладке
@@ -839,7 +799,7 @@ namespace Cinema_VP
 
                 if (numbers[seat_to_change] == "1")     // выбираем только то место которое существует
                 {
-                    numbers[seat_to_change] = "5";
+                    numbers[seat_to_change] = "5"; //выбранное место
                     result = numbers[0];
                 }
 
@@ -945,7 +905,7 @@ namespace Cinema_VP
         }
     }
 
-    public class databaseAccess
+    public class databaseAccess //класс для работы с бд
     {
         public cinemaEntities2 db = new cinemaEntities2();
         public string[] seats_array = new string[10];   // обьявление массива мест в зрительном зале
@@ -992,9 +952,9 @@ namespace Cinema_VP
             string[] seat_for_split = new string[2];
             seat_for_split[0] = Row;
             seat_for_split[1] = Seat;
-            int seat_to_DB = ((int.Parse(Seat)) - 1) + (int.Parse(Row) - 1) * 10;
+            int seat_to_DB = ((int.Parse(Seat)) - 1) + (int.Parse(Row) - 1) * 10; //определяем место,которое будет помечено как занятое
             string[] seats_forProcess = seats_array.Split(',');  // получаем карту зала которую хотим обновить
-            seats_forProcess[seat_to_DB] = "2";
+            seats_forProcess[seat_to_DB] = "2"; //2-занятое место
             result = seats_forProcess[0];
 
             for (int i = 1; i < 50; i++)
@@ -1034,7 +994,7 @@ namespace Cinema_VP
             int hall_ID = 0;
             string seat_for_delete = "";
             string result = "";
-            bool retCode = false;
+            bool retCode = false; //возвращаемое значение удачно ли нет
 
             var de = db.tickets.Where(x => x.ticket_id == ID).FirstOrDefault();
 
@@ -1069,12 +1029,12 @@ namespace Cinema_VP
             seats_forProcess[seat_to_DB] = "1";
             result = seats_forProcess[0];
 
-            for (int i = 1; i < 50; i++)
+            for (int i = 1; i < 50; i++) //50-кол-во мест в зале
             {
                 result += ("," + seats_forProcess[i]);
             }
 
-            db.Configuration.ValidateOnSaveEnabled = false;
+            db.Configuration.ValidateOnSaveEnabled = false; //update bd
             var verifcation = db.hall_showtime.Where(x => x.showtime_id == shoID && x.hall_id == hall_ID).FirstOrDefault();
             verifcation.seat_map = result;
 
@@ -1084,7 +1044,7 @@ namespace Cinema_VP
             return retCode;
         }
 
-        public int GetTicketNummber(string seat, int Hall_ID, string Movietitle, string MovieTime)
+        public int GetTicketNummber(string seat, int Hall_ID, string Movietitle, string MovieTime) //получаем номер билета
         {
             int result = 0;
             int movID = 0;
@@ -1125,7 +1085,7 @@ namespace Cinema_VP
             return result;
         }
 
-        public bool validateTicket(int ID)
+        public bool validateTicket(int ID) //если ли билет в бд
         {
             bool retCode = false;
 
@@ -1139,7 +1099,7 @@ namespace Cinema_VP
             return retCode;
         }
 
-        public bool isTicketBooked (int ID)
+        public bool isTicketBooked (int ID) //является ли билет забронированным или купленным
         {
             bool result = false;
 
@@ -1155,6 +1115,7 @@ namespace Cinema_VP
             return result;
         }
 
+        //метод для добавления нового фильма
         public int addMovie(ref ComboBox cmbTitleFilmTab3, ref TextBox txbDirectorTab3, ref TextBox txbGenerTab3,
                    ref TextBox txbYearTab3, ref TextBox txbDurationTab3, ref RichTextBox rtbCastTab3, ref TextBox txbPriceTab3,
                    ref DateTimePicker dateTimePicker1, ref ComboBox cmbDiscountTab3, ref ComboBox cmbTimeTab3, ref ComboBox cmbHallTab3)
@@ -1206,7 +1167,7 @@ namespace Cinema_VP
 
             try
             {
-                number_of_showtimes = db.showtimes.Max(n => n.showtime_id) + 1;
+                number_of_showtimes = db.showtimes.Max(n => n.showtime_id) + 1; //находим мак. индекс записи в таблице для доб.новой записи
             }
             catch
             {
@@ -1217,13 +1178,12 @@ namespace Cinema_VP
             {
                 showtime_id = number_of_showtimes,
                 movieid = number_of_movies,
-                price = (int)(float.Parse(txbPriceTab3.Text) * ((100 - float.Parse(cmbDiscountTab3.Text.Remove(2, 1))) / 100)),
+                price = (int)(float.Parse(txbPriceTab3.Text) * ((100 - float.Parse(cmbDiscountTab3.Text.Remove(2, 1))) / 100)), //скидка на цену
                 date = dateTimePicker1.Value,
-                time = TimeSpan.Parse(cmbTimeTab3.Text)
+                time = TimeSpan.Parse(cmbTimeTab3.Text) 
             };
 
-
-            string hall = cmbHallTab3.Text;
+            string hall = cmbHallTab3.Text; //выбор id по названию
 
             var query_hall = (from g in db.halls
                               where g.hall_name == hall
@@ -1272,7 +1232,7 @@ namespace Cinema_VP
             }
             else
             {
-                //--------------------------- обновляем только цену при добовлении скидки------------------
+                //--------------------------- обновляем только цену при добавлении скидки------------------//
                 int priceAfterDiscount = (int)(float.Parse(txbPriceTab3.Text) * ((100 - float.Parse(cmbDiscountTab3.Text.Remove(2, 1))) / 100));
                 
                 int shoID = 0;
@@ -1290,7 +1250,7 @@ namespace Cinema_VP
                 }
 
                 db.Configuration.ValidateOnSaveEnabled = false;
-                MessageBox.Show(number_of_showtimes.ToString() + "  " + number_of_movies.ToString());
+                //MessageBox.Show(number_of_showtimes.ToString() + "  " + number_of_movies.ToString());
                 var verifcation = db.showtimes.Where(x => x.showtime_id == shoID && x.movieid == number_of_movies).FirstOrDefault();
                 verifcation.price = priceAfterDiscount;
                 MessageBox.Show("Скидка записана");
@@ -1302,7 +1262,7 @@ namespace Cinema_VP
             return 0;
         }
 
-        public (string, string) loginFunc(string login, string password) // функция входа для логина и пароля
+        public (string, string) loginFunc(string login, string password) // метод в классе для входа  логина и пароля
         {
             var temp_login = (from r in db.roles
                               select new { r.role1, r.login, r.password }).ToList();
@@ -1321,7 +1281,7 @@ namespace Cinema_VP
         public void selectTimeByMovieTitle(ref ComboBox cmbTime, ref ComboBox cmbTitleFilmTab1, ref ComboBox cmbHall, ref TextBox txbDirectorTab1, 
             ref TextBox txbYearTab1, ref TextBox txbGenerTab1,  ref TextBox txbDurationTab1, ref RichTextBox rtbCastTab1, ref Label lblPrice)
         {
-
+            //заполняет combobox времени после выбора названия фильма
             int[] sh_ID = new int[10];
             int i = 0;
             int temp = 0;
